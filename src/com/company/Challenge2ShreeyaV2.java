@@ -1,8 +1,9 @@
 package com.company;
 
 public class Challenge2ShreeyaV2 {
+   //This is the global variable to make it sizeable
     public static final int SIZE = 5;
-
+//This is the main method
     public static void main(String[] args) {
         HorizontalBorder();
         TopHalf();
@@ -12,7 +13,7 @@ public class Challenge2ShreeyaV2 {
         TopHalf();
         HorizontalBorder();
     }
-
+//This is the for loops for the horizontal border method
     public static void HorizontalBorder() {
         System.out.print("+");
         for (int dash = 0; dash < 2 * SIZE + 1; dash++) {
@@ -20,7 +21,7 @@ public class Challenge2ShreeyaV2 {
         }
         System.out.println("+");
     }
-
+//this is the for loops for the top half method
     public static void TopHalf() {
         for (int line = 1; line <= SIZE; line++) {
             System.out.print("|");
@@ -41,7 +42,7 @@ public class Challenge2ShreeyaV2 {
             System.out.println("|");
         }
     }
-
+//this is the for loops for the bottom half method
     public static void BottomHalf() {
         for (int line = 1; line <= SIZE; line++) {
             System.out.print("|");
