@@ -10,6 +10,7 @@ public class GangstaNameFinal {
         Scanner name = new Scanner(System.in);
         System.out.println("What is your full name?");
         String FullName = name.nextLine();
+    //Used nextLine because Full name has to include both words aka the full string not just the first word
         RapperName(FullName);
     }
 
