@@ -34,13 +34,13 @@ System.out.println("Type your integer here:");
 int integer = screen.nextInt();
 System.out.println("Type your double here:");
 double doubly = screen.nextDouble();
+screen.nextLine();
 System.out.println("Type your input message here:");
 String message = screen.nextLine();
-System.out.println(i+integer);
+/*System.out.println(i+integer);
 System.out.println(d+doubly);
-System.out.println(s + " " + message);
-
-
+System.out.println(s + " " + message);*/
+System.out.printf("\n %1d \n %1.1f \n %1s", i+integer, d+doubly, s + " " + message);
     }
 
 }
