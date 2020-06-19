@@ -43,10 +43,10 @@ public class IntroToConditionalStatementsChallenge {
        }}while (n < 1);
     //providing the output
         int remainder = n%2;
-        if ((remainder == 1) || (remainder == 0 && n>=6 && n<=20)){
+        if ((remainder == 1) || ( n>=6 && n<=20)){
             System.out.println("Weird");
         }
-        else if ((remainder == 0 && n>=2 && n<=5)||(remainder == 0 && n>=20))
+        else if (( n>=2 && n<=5)||(n>=20))
     {
             System.out.println("Not Weird");
         }
