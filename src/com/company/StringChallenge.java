@@ -51,7 +51,7 @@ public class StringChallenge {
     //This is the Main Method
     public static void main(String[] args) {
         Scanner screen = new Scanner(System.in);
-        System.out.println("Please enter an integer between 1 (inclusive) and 10 (inclusive). This will be the amount of words you want to process");
+        System.out.println("Please enter an integer between 1 (inclusive) and 10 (inclusive). This will be the amount of words you want to process.");
         int T = screen.nextInt();
         while (T < 1 || T > 10) {
             System.out.println("Your integer is not between 1 and 10 inclusive. Try again.");
@@ -75,6 +75,7 @@ public class StringChallenge {
             for (int i = 1; i <= T; i++) {
                 indexOf = S.indexOf(" "); // First index of Space
                 String NextWord = (S.substring(0, indexOf));
+               //return type is void
                 CharMethod(NextWord);
 
                 S = S.substring(indexOf + 1);
@@ -97,5 +98,7 @@ public class StringChallenge {
             q = q + 2;
         } while(q < len);
         System.out.println(" ");
+        //returning void
+        return;
     }
 }

@@ -5,7 +5,7 @@
 //4. Get the message using nextLine()
 //5. Print System.out.print (“Type your word or phrase here:”) to get the user input
 //6. Find the first word
-//7. Int indexOfSpace= firstWord.indexOf(“ “)
+//7. Int indexOfSApace= firstWord.indexOf(“ “)
 //8. Find length of first word
 //9. Also isolate the message
 //10. With index (indexOf())

@@ -63,7 +63,6 @@ public class June15thletterloopfinal {
                 System.out.println(let + " " + count);
 
                 count = 0;
-
                 }
             }
         }
