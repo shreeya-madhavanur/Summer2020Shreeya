@@ -120,7 +120,6 @@ import java.util.*;
 public class ShreeyaTejFinalProjectFinalVersion {
 
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("C:\\Users\\shree\\IdeaProjects\\Summer2020Shreeya\\src\\com\\company\\ShreeyaTejFinalProjectTokens");
         //Scanner scanFile = new Scanner(file); is defined later in the loop where it works better
         Scanner scanUser = new Scanner(System.in);
         int score = 0; //initializing int score
@@ -140,6 +139,7 @@ public class ShreeyaTejFinalProjectFinalVersion {
 
 
         do { // do while loop which controls how many times the user plays - as long as flag = true
+            File file = new File("C:\\Users\\shree\\IdeaProjects\\Summer2020Shreeya\\src\\com\\company\\ShreeyaTejFinalProjectTokens");
             flag = true;
             Scanner scanFile = new Scanner(file);
             System.out.println("Do you want to guess words, integers, or doubles?");//initial choice between categories
@@ -195,7 +195,6 @@ public class ShreeyaTejFinalProjectFinalVersion {
                 String AnswerDouble = ""; //same process as previous games pretty much, just with different variables
                 while (scanFile.hasNext()) {
                     AnswerDouble = scanUser.next();
-                    System.out.println("Double is " + AnswerDouble);
                     while (scanFile.hasNext()) {
 
                         NextDouble = scanFile.next();
