@@ -12,6 +12,7 @@
     c. Print “|     Welcome!     |”
     d. Insert BottomHalf method for welcome screen
     e. Insert horizontal border method for welcome screen
+    f. Call rules method
 9. Create do while loop with while being flag == true
     a. Define flag as true at the beginning
     b. Create new Scanner called scanFile which scans the file
@@ -98,6 +99,9 @@
     e. Print <>
     f. Create a for loop for the spaces on the right side of the center
     g. Create a for loop for the right most | column
+20. Create a method for the rules
+    a. literally just print the rules
+
 
 
 
@@ -119,31 +123,34 @@ public class ShreeyaTejFinalProjectFinalVersion {
         File file = new File("C:\\Users\\shree\\IdeaProjects\\Summer2020Shreeya\\src\\com\\company\\ShreeyaTejFinalProjectTokens");
         //Scanner scanFile = new Scanner(file); is defined later in the loop where it works better
         Scanner scanUser = new Scanner(System.in);
-        int score = 0;
-        int times = 0;
-        boolean flag = false;
-        String Next = "";
-        String NextInt = "";
-        String NextDouble = "";
-        HorizontalBorder();
+        int score = 0; //initializing int score
+        int times = 0; //initializing int times
+        boolean flag; //creating boolean flag
+        String Next = ""; //initializing Next for words
+        String NextInt = ""; //initializing NextInt for ints
+        String NextDouble = ""; //initializing NextDouble for doubles
+        HorizontalBorder(); //this line and up till line 138 are the welcome picture methods
         TopHalf();
+        HorizontalBorder();
         System.out.println("|    Welcome!    |");
+        HorizontalBorder();
         BottomHalf();
         HorizontalBorder();
+        Rules(); //calling the method that explains the rules
 
-        do {
+
+        do { // do while loop which controls how many times the user plays - as long as flag = true
             flag = true;
             Scanner scanFile = new Scanner(file);
-            System.out.println("Do you want to guess words, integers, or doubles?");
+            System.out.println("Do you want to guess words, integers, or doubles?");//initial choice between categories
             String Category = scanUser.next();
-            if (Category.contains("or")) {
+            if (Category.contains("or")) {//more flexible because they might put word, words, Words, Word
                 System.out.println("Try to guess people's names that I'm thinking of!");
-                String Answer = "";
-                Answer = scanUser.next();
-                while (scanFile.hasNext()) {
+                String Answer = scanUser.next().toLowerCase(); //initializes + lowercases it so capitals doesn't matter
+                while (scanFile.hasNext()) { //will perform as long as there is somethng next in the file
 
                     Next = scanFile.next();
-                    if (Next.contains(Answer)) {
+                    if (Next.contains(Answer)) {//for if the scan contains the answer they guessed -->they're right
                         RightAnswer(score, times);
                         score++;
                         times++;
@@ -151,18 +158,18 @@ public class ShreeyaTejFinalProjectFinalVersion {
                     }
 
                 }
-                if (!Next.contains(Answer)) {
+                if (!Next.contains(Answer)) { //for if the scan doesn't contain their  guess --> they're wrong
 
                     WrongAnswer(score, times);
                     times++;
                 }
 
-                flag = loop(scanUser, flag, score, times);
+                flag = loop(scanUser, flag, score, times); //from the return method that asks if they want to keep going
 
-            } else if (Category.contains("nt")) {
+            } else if (Category.contains("nt")) { //if it isn't the first category word then it'll come here to int game
                 System.out.println("try to guess an integer from 9 - 1000!");
                 String AnswerInt = scanUser.next();
-                while (scanFile.hasNext()) {
+                while (scanFile.hasNext()) { //this is pretty much the same process as the word game
                     if (scanFile.hasNext()) {
                         NextInt = scanFile.next();
 
@@ -183,13 +190,12 @@ public class ShreeyaTejFinalProjectFinalVersion {
 
                 flag = loop(scanUser, flag, score, times);
 
-            } else if (Category.contains("ou")) {
+            } else if (Category.contains("ou")) { //comes here if the user didn't want word or int
                 System.out.println("Hardest level: try to guess a double to the nearest tenth between 0 and 1000!");
-                String AnswerDouble = "";
+                String AnswerDouble = ""; //same process as previous games pretty much, just with different variables
                 while (scanFile.hasNext()) {
                     AnswerDouble = scanUser.next();
                     System.out.println("Double is " + AnswerDouble);
-                    //AnswerDouble = (((int) (AnswerDouble * 10)) / 10.0);
                     while (scanFile.hasNext()) {
 
                         NextDouble = scanFile.next();
@@ -200,6 +206,7 @@ public class ShreeyaTejFinalProjectFinalVersion {
                             break;
                         }
                     }
+                    break;
                 }
                 if (!(NextDouble.equals(AnswerDouble))) {
 
@@ -209,38 +216,54 @@ public class ShreeyaTejFinalProjectFinalVersion {
 
                 flag = loop(scanUser, flag, score, times);
 
-            } else {
-                flag = false;
-                System.out.println("That's not an option. Try again");
             }
+            else //this is where it comes if the user didn't pick a valid option and it sends the back
+             {
+                flag = true; //sends them back to the beginning
+                System.out.println("That's not an option silly goose!");
+             }
 
         }
 
-        while (flag == true);
+        while (flag); //this is the conditions for the loop, it'll repeat while flag = true
 
     }
 
-    public static void RightAnswer(int score, int times) {
-        score++;
-        times++;
-        System.out.println("You are correct! Your score is now: " + score + " and you've won " + score + " out of " + times + " of your rounds. ");
+    public static void RightAnswer(int score, int times) { //method for if they get the right answer
+        score++;//increases score in here
+        times++;//increases times in here
+        System.out.println("You are correct! Your score is now: " + score + " and you've won " + score + " out of "
+                + times + " of your rounds. "); //message to let the user know they're right and their score and rounds
+        System.out.println("You're one smart cookie!"); //cute message
     }
 
-    public static void WrongAnswer(int score, int times) {
-        times++;
-        System.out.println("You are Wrong. Your score is: " + score + " and you've won " + score + " out of " + times + " of your rounds.");
+    public static void WrongAnswer(int score, int times) { //method for if they get the wrong answer
+        times++;//increases times in here
+        System.out.println("You are Wrong. Your score is: " + score + " and you've won " + score + " out of " + times +
+                " of your rounds."); //message to let the user know they're wrong and their score and rounds played
+        System.out.println("It's ok...the silly cookie and the smart cookie are equally delicious!");//cute message
     }
 
-    public static boolean loop(Scanner scanUser, boolean flag, int score, int times) {
-        System.out.println("Do you want to keep going?");
+    public static boolean loop(Scanner scanUser, boolean flag, int score, int times) {//this is my return method
+        System.out.println("Do you want to keep going?"); //this is for the loop
         String YesNo = scanUser.next();
         if (YesNo.contains("e")) {
             flag = true;
-            return flag;
+            return flag; //this is the value that gets returned, loop will continue
         } else {
-            System.out.println("Thanks for playing! Your final score is: " + score + " and you've won " + score + " out of " + times + " of your rounds.");
+            System.out.println("Thanks for playing! Your final score is: " + score + " and you've won " + score +
+                    " out of " + times + " of your rounds."); //final score + rounds
+            HorizontalBorder(); //goodbye screen
+            TopHalf();
+            HorizontalBorder();
+            System.out.println("|    Goodbye!    |");
+            HorizontalBorder();
+            BottomHalf();
+            HorizontalBorder();//goodbye screen
             flag = false;
-            return flag;
+            return flag; //this is the value that gets returned loop will end
+            /*i know the return flag could have been done once outside the if else instead of twice inside of it, but I
+            did once inside both if and else just for organization purposes*/
         }
 
     }
@@ -248,13 +271,13 @@ public class ShreeyaTejFinalProjectFinalVersion {
     public static void HorizontalBorder() {
         System.out.print("#");
         for (int border = 1; border <= 16; border++) {
-            System.out.print("=");
+            System.out.print("*");
         }
         System.out.println("#");
     }
 
-    //This is the for loops for the Top Half Method
-    public static void TopHalf() {
+    //This is the for loops for the Bottom Half Method
+    public static void BottomHalf() {
         for (int line = 1; line <= 4; line++) {
             System.out.print("|");
             for (int space = 1; space <= -2 * line + 8; space++) {
@@ -273,8 +296,8 @@ public class ShreeyaTejFinalProjectFinalVersion {
         }
     }
 
-    //This is the for loops for the bottom half method
-    public static void BottomHalf() {
+    //This is the for loops for the Top half method
+    public static void TopHalf() {
         for (int line = 1; line < 5; line++) {
             System.out.print("|");
             for (int space = 1; space <= 2 * line - 2; space++) {
@@ -293,6 +316,16 @@ public class ShreeyaTejFinalProjectFinalVersion {
 
 
     }
+
+    public static void Rules() //here is the void method for the rules
+    {
+        System.out.println("Rules:");
+        System.out.println("Welcome to the guessing game!");
+        System.out.println("You can try to guess words, integers, or doubles (decimals) to the nearest tenth.");
+        System.out.println("After each completed guess, you'll get an option to quit.");
+        System.out.print("Let's begin! ");
+    }
+
 }
 
 
